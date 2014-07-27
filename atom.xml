@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2014-07-27T09:34:47+09:00</updated>
-  <id>http://yoursite.com/</id>
+  <title><![CDATA[for loop]]></title>
+  <link href="http://azurecube.github.io/atom.xml" rel="self"/>
+  <link href="http://azurecube.github.io/"/>
+  <updated>2014-07-27T13:23:57+09:00</updated>
+  <id>http://azurecube.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[arte_nut (twitter)]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress導入]]></title>
-    <link href="http://yoursite.com/blog/2014/07/27/octopress/"/>
+    <link href="http://azurecube.github.io/blog/2014/07/27/octopress/"/>
     <updated>2014-07-27T00:19:30+09:00</updated>
-    <id>http://yoursite.com/blog/2014/07/27/octopress</id>
+    <id>http://azurecube.github.io/blog/2014/07/27/octopress</id>
     <content type="html"><![CDATA[<h2>動機</h2>
 
 <p>blogを書くのが面倒になって久しくoutputしてなかったのだけど、下記を見て試してちょっと試してみたくなったので。</p>
@@ -46,12 +46,13 @@
 <p>ただ、どうもpreview時に下記のようなエラーになってしまうので調べたところ下記と似たような状況だったのでGemfileに <code>gem 'therubyracer'</code> を追加して対処。<br/>
 <a href="http://mymemo.weby117.com/develop/ruby-geminstall-error_3.html">Ruby:Rails4 で Could not find a JavaScript runtime エラー | サイト運営の私的メモ</a></p>
 
-<p><code>
-% rake preview
-Starting to watch source with Jekyll and Compass. Starting Rack on port 4000
-/home/kino/.rbenv/versions/1.9.3-p547/lib/ruby/gems/1.9.1/gems/execjs-2.2.0/lib/execjs/runtimes.rb:51:in `autodetect': Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list o
-f available runtimes. (ExecJS::RuntimeUnavailable)
-</code></p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>% rake preview  
+</span><span class='line'>Starting to watch source with Jekyll and Compass. Starting Rack on port 4000  
+</span><span class='line'>/home/kino/.rbenv/versions/1.9.3-p547/lib/ruby/gems/1.9.1/gems/execjs-2.2.0/lib/execjs/runtimes.rb:51:in `autodetect': Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list of available runtimes. (ExecJS::RuntimeUnavailable)</span></code></pre></td></tr></table></div></figure>
+
 
 <p>上記までで一応目標は達成。<br/>
 markdownを忘れてしまったまま書いているので勉強しなおさないといけないのだけど、せっかく手元で色々設定できるのでwebベースのブログを使ってたころに挫折したEmacsとの連携もどうにかしたいところ。</p>

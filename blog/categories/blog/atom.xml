@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blog | for loop]]></title>
   <link href="http://azurecube.github.io/blog/categories/blog/atom.xml" rel="self"/>
   <link href="http://azurecube.github.io/"/>
-  <updated>2014-07-27T13:29:59+09:00</updated>
+  <updated>2014-07-27T13:52:37+09:00</updated>
   <id>http://azurecube.github.io/</id>
   <author>
     <name><![CDATA[arte_nut (twitter)]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress 設定]]></title>
+    <link href="http://azurecube.github.io/blog/2014/07/27/octopress-config/"/>
+    <updated>2014-07-27T13:41:23+09:00</updated>
+    <id>http://azurecube.github.io/blog/2014/07/27/octopress-config</id>
+    <content type="html"><![CDATA[<h2>動機</h2>
+
+<p>とりあえず作ったgithub pagesに最低限の設定を施したい</p>
+
+<h2>目標</h2>
+
+<ul>
+<li>blogのタイトルを変える</li>
+<li>linkを新しいtabで開く</li>
+</ul>
+
+
+<h2>結果</h2>
+
+<p>達成、というのもおこがましい気がするけど、なんとかなった。</p>
+
+<h2>過程</h2>
+
+<p>今回の目標に関する内容はほぼ下記より。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress導入]]></title>

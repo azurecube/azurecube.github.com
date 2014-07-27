@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2014-07-27T09:34:47+09:00</updated>
+  <id>http://yoursite.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress導入]]></title>
+    <link href="http://yoursite.com/blog/2014/07/27/octopress/"/>
+    <updated>2014-07-27T00:19:30+09:00</updated>
+    <id>http://yoursite.com/blog/2014/07/27/octopress</id>
+    <content type="html"><![CDATA[<h2>動機</h2>
+
+<p>blogを書くのが面倒になって久しくoutputしてなかったのだけど、下記を見て試してちょっと試してみたくなったので。</p>
+
+<blockquote class="twitter-tweet" lang="ja"><p>ブロマガにシンタクスハイライトされたコードを貼付ける機能がないためブロマガでプログラミングの記事を書く気になりません。なんとかしてください。 — 現在、ブログとして最高のWebサービスはGitHubであると思う。 <a href="http://t.co/x1K4pG0XH7">http://t.co/x1K4pG0XH7</a></p>&mdash; Ryou Ezoe (@EzoeRyou) <a href="https://twitter.com/EzoeRyou/statuses/492108203518611456">2014, 7月 24</a></blockquote>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h2>目標</h2>
+
+<p>octopressを使ってのGithub Pageの作成</p>
+
+<h2>結果</h2>
+
+<p>今見ているこのページ。</p>
+
+<h2>過程</h2>
+
+<p>Githubでblogということで探していると、どうも静的にローカルで作成してuploadする形式になりoctopressというツールが便利そうだったのでひとまずこれを採用していじってみることにしようと方針が決まる。</p>
+
+<p>リポジトリの持ち方などは下記を参考に。<br/>
+<a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで &ndash; T.I.D.</a></p>
+
+<p>ただ、どうもpreview時に下記のようなエラーになってしまうので調べたところ下記と似たような状況だったのでGemfileに <code>gem 'therubyracer'</code> を追加して対処。<br/>
+<a href="http://mymemo.weby117.com/develop/ruby-geminstall-error_3.html">Ruby:Rails4 で Could not find a JavaScript runtime エラー | サイト運営の私的メモ</a></p>
+
+<p><code>
+% rake preview
+Starting to watch source with Jekyll and Compass. Starting Rack on port 4000
+/home/kino/.rbenv/versions/1.9.3-p547/lib/ruby/gems/1.9.1/gems/execjs-2.2.0/lib/execjs/runtimes.rb:51:in `autodetect': Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list o
+f available runtimes. (ExecJS::RuntimeUnavailable)
+</code></p>
+
+<p>上記までで一応目標は達成。<br/>
+markdownを忘れてしまったまま書いているので勉強しなおさないといけないのだけど、せっかく手元で色々設定できるのでwebベースのブログを使ってたころに挫折したEmacsとの連携もどうにかしたいところ。</p>
+
+<p>たださがしているとorg-modeと連携できるようで便利そうなのがあり、いきなりmarkdown学習意欲が削がれることに。<br/>
+<a href="http://quickhack.net/nom/blog/2013-05-01-org-octopress.html">Octopress の記事を org-mode で &ndash; Quickhack Diary</a></p>
+
+<p>それなりにoutputが簡単にできそうな環境を作れそうなので今後いくつかは書き方とか、設定とかに関して投稿できれば良いな。</p>
+]]></content>
+  </entry>
+  
+</feed>

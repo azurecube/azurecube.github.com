@@ -10,8 +10,7 @@
 
   
   <meta name="description" content="動機 とりあえず作ったgithub pagesに最低限の設定を施したい 目標 blogのタイトルを変える
-linkを新しいtabで開く 結果 達成、というのもおこがましい気がするけど、なんとかなった。 過程 今回の目標に関する内容はほぼ下記より。
-">
+エントリ内のlinkを新しいtabで開く 結果 達成、というのもおこがましい気がするけど、なんとかなった。 過程 blogのtitleは_config.ymlの変更。下記を参考に。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,6 +30,13 @@ linkを新しいtabで開く 結果 達成、というのもおこがましい�
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<script language="JavaScript">
+$(document).ready( function () {
+   $("a[href^='http']").attr('target', '_blank');
+})
+</script>
+
 
   
 
@@ -99,7 +105,7 @@ linkを新しいtabで開く 結果 達成、というのもおこがましい�
 
 <ul>
 <li>blogのタイトルを変える</li>
-<li>linkを新しいtabで開く</li>
+<li>エントリ内のlinkを新しいtabで開く</li>
 </ul>
 
 
@@ -109,7 +115,26 @@ linkを新しいtabで開く 結果 達成、というのもおこがましい�
 
 <h2>過程</h2>
 
-<p>今回の目標に関する内容はほぼ下記より。</p>
+<p>blogのtitleは_config.ymlの変更。下記を参考に。<br/>
+<a href="http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/">GithubとOctopressでモダンな技術系ブログを作ってみる &ndash; Glide Note &ndash; グライドノート</a></p>
+
+<p>linkについては下記を参考に外部ファイルに限らず_blankを設定することに。<br/>
+<a href="http://tantant.jp/blog/Octopress/configuring-octopress/">Octopressの初期設定時に気にしておきたい9箇所 &ndash; tantant</a></p>
+
+<figure class='code'><figcaption><span>:source/include/config/head.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">language</span><span class="o">=</span><span class="s2">&quot;JavaScript&quot;</span><span class="o">&gt;</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a[href^=&#39;http&#39;]&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;_blank&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とりあえず見栄えはともかくoutputに必要最低限が得られたので、記録しながら作業を進めていくことにしたい。</p>
 </div>
 
 
@@ -158,6 +183,8 @@ linkを新しいtabで開く 結果 達成、というのもおこがましい�
         <a class="basic-alignment left" href="/blog/2014/07/27/octopress/" title="Previous Post: octopress導入">&laquo; octopress導入</a>
       
       
+        <a class="basic-alignment right" href="/blog/2014/07/30/shutdown/" title="Next Post: Local Linuxのshutdown">Local Linuxのshutdown &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -169,6 +196,10 @@ linkを新しいtabで開く 結果 達成、というのもおこがましい�
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/30/shutdown/">Local Linuxのshutdown</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/07/27/octopress-config/">Octopress 設定</a>

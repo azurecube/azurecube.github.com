@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>for loop</title>
+  <title>Local Linuxのshutdown - for loop</title>
   <meta name="author" content="arte_nut (twitter)">
 
   
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://azurecube.github.io">
+  <link rel="canonical" href="http://azurecube.github.io/blog/2014/07/30/shutdown">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="for loop" type="application/atom+xml">
@@ -69,15 +69,12 @@ $(document).ready( function () {
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/07/30/shutdown/">Local Linuxのshutdown</a></h1>
+      <h1 class="entry-title">Local Linuxのshutdown</h1>
     
     
       <p class="meta">
@@ -100,7 +97,7 @@ $(document).ready( function () {
   </header>
 
 
-  <div class="entry-content"><h2>目標</h2>
+<div class="entry-content"><h2>目標</h2>
 
 <p>Localで使ってるLinuxをremoteと間違えずに停止する</p>
 
@@ -185,95 +182,16 @@ fi
 
 <p>とりあえず私はこれで誤停止しなくなったのだけど、また別のシチュエーションでの停止の問題があったら他の方法も考えてみたい</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/07/27/octopress-config/">Octopress 設定</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">arte_nut (twitter)</span></span>
 
-<time datetime="2014-07-27T13:41:23+09:00" pubdate data-updated="true">Jul 27<sup>th</sup>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>動機</h2>
-
-<p>とりあえず作ったgithub pagesに最低限の設定を施したい</p>
-
-<h2>目標</h2>
-
-<ul>
-<li>blogのタイトルを変える</li>
-<li>エントリ内のlinkを新しいtabで開く</li>
-</ul>
-
-
-<h2>結果</h2>
-
-<p>達成、というのもおこがましい気がするけど、なんとかなった。</p>
-
-<h2>過程</h2>
-
-<p>blogのtitleは_config.ymlの変更。下記を参考に。<br/>
-<a href="http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/">GithubとOctopressでモダンな技術系ブログを作ってみる &ndash; Glide Note &ndash; グライドノート</a></p>
-
-<p>linkについては下記を参考に外部ファイルに限らず_blankを設定することに。<br/>
-<a href="http://tantant.jp/blog/Octopress/configuring-octopress/">Octopressの初期設定時に気にしておきたい9箇所 &ndash; tantant</a></p>
-
-<figure class='code'><figcaption><span>:source/include/config/head.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">language</span><span class="o">=</span><span class="s2">&quot;JavaScript&quot;</span><span class="o">&gt;</span>
-</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a[href^=&#39;http&#39;]&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;_blank&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">})</span>
-</span><span class='line'><span class="o">&lt;</span><span class="err">/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>とりあえず見栄えはともかくoutputに必要最低限が得られたので、記録しながら作業を進めていくことにしたい。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/07/27/octopress/">Octopress導入</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -285,69 +203,38 @@ fi
   
 
 
-<time datetime="2014-07-27T00:19:30+09:00" pubdate data-updated="true">Jul 27<sup>th</sup>, 2014</time>
-        
-      </p>
+<time datetime="2014-07-30T08:18:57+09:00" pubdate data-updated="true">Jul 30<sup>th</sup>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/env/'>env</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><h2>動機</h2>
-
-<p>blogを書くのが面倒になって久しくoutputしてなかったのだけど、下記を見て試してちょっと試してみたくなったので。</p>
-
-<blockquote class="twitter-tweet" lang="ja"><p>ブロマガにシンタクスハイライトされたコードを貼付ける機能がないためブロマガでプログラミングの記事を書く気になりません。なんとかしてください。 — 現在、ブログとして最高のWebサービスはGitHubであると思う。 <a href="http://t.co/x1K4pG0XH7">http://t.co/x1K4pG0XH7</a></p>&mdash; Ryou Ezoe (@EzoeRyou) <a href="https://twitter.com/EzoeRyou/statuses/492108203518611456">2014, 7月 24</a></blockquote>
-
-
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-<h2>目標</h2>
-
-<p>octopressを使ってのGithub Pageの作成</p>
-
-<h2>結果</h2>
-
-<p>今見ているこのページ。</p>
-
-<h2>過程</h2>
-
-<p>Githubでblogということで探していると、どうも静的にローカルで作成してuploadする形式になりoctopressというツールが便利そうだったのでひとまずこれを採用していじってみることにしようと方針が決まる。</p>
-
-<p>リポジトリの持ち方などは下記を参考に。<br/>
-<a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで &ndash; T.I.D.</a></p>
-
-<p>ただ、どうもpreview時に下記のようなエラーになってしまうので調べたところ下記と似たような状況だったのでGemfileに <code>gem 'therubyracer'</code> を追加して対処。<br/>
-<a href="http://mymemo.weby117.com/develop/ruby-geminstall-error_3.html">Ruby:Rails4 で Could not find a JavaScript runtime エラー | サイト運営の私的メモ</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>% rake preview  
-</span><span class='line'>Starting to watch source with Jekyll and Compass. Starting Rack on port 4000  
-</span><span class='line'>/home/kino/.rbenv/versions/1.9.3-p547/lib/ruby/gems/1.9.1/gems/execjs-2.2.0/lib/execjs/runtimes.rb:51:in `autodetect': Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list of available runtimes. (ExecJS::RuntimeUnavailable)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>上記までで一応目標は達成。<br/>
-markdownを忘れてしまったまま書いているので勉強しなおさないといけないのだけど、せっかく手元で色々設定できるのでwebベースのブログを使ってたころに挫折したEmacsとの連携もどうにかしたいところ。</p>
-
-<p>たださがしているとorg-modeと連携できるようで便利そうなのがあり、いきなりmarkdown学習意欲が削がれることに。<br/>
-<a href="http://quickhack.net/nom/blog/2013-05-01-org-octopress.html">Octopress の記事を org-mode で &ndash; Quickhack Diary</a></p>
-
-<p>それなりにoutputが簡単にできそうな環境を作れそうなので今後いくつかは書き方とか、設定とかに関して投稿できれば良いな。</p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://azurecube.github.io/blog/2014/07/30/shutdown/" data-via="" data-counturl="http://azurecube.github.io/blog/2014/07/30/shutdown/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/07/27/octopress-config/" title="Previous Post: octopress 設定">&laquo; octopress 設定</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -375,6 +262,7 @@ markdownを忘れてしまったまま書いているので勉強しなおさな
 
   
 </aside>
+
 
     </div>
   </div>

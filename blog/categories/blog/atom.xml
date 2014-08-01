@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blog | for loop]]></title>
   <link href="http://azurecube.github.io/blog/categories/blog/atom.xml" rel="self"/>
   <link href="http://azurecube.github.io/"/>
-  <updated>2014-07-27T13:52:37+09:00</updated>
+  <updated>2014-08-01T09:08:44+09:00</updated>
   <id>http://azurecube.github.io/</id>
   <author>
     <name><![CDATA[arte_nut (twitter)]]></name>
@@ -26,7 +26,7 @@
 
 <ul>
 <li>blogのタイトルを変える</li>
-<li>linkを新しいtabで開く</li>
+<li>エントリ内のlinkを新しいtabで開く</li>
 </ul>
 
 
@@ -36,7 +36,24 @@
 
 <h2>過程</h2>
 
-<p>今回の目標に関する内容はほぼ下記より。</p>
+<p>blogのtitleは_config.ymlの変更。下記を参考に。<br/>
+<a href="http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/">GithubとOctopressでモダンな技術系ブログを作ってみる &ndash; Glide Note &ndash; グライドノート</a></p>
+
+<p>linkについては下記を参考に外部ファイルに限らず_blankを設定することに。<br/>
+<a href="http://tantant.jp/blog/Octopress/configuring-octopress/">Octopressの初期設定時に気にしておきたい9箇所 &ndash; tantant</a></p>
+
+<p>```javascript :source/include/config/head.html</p>
+
+<script language="JavaScript">
+$(document).ready( function () {
+   $("a[href^='http']").attr('target', '_blank');
+})
+</script>
+
+
+<p>```</p>
+
+<p>とりあえず見栄えはともかくoutputに必要最低限が得られたので、記録しながら作業を進めていくことにしたい。</p>
 ]]></content>
   </entry>
   

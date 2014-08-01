@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Env | for loop]]></title>
   <link href="http://azurecube.github.io/blog/categories/env/atom.xml" rel="self"/>
   <link href="http://azurecube.github.io/"/>
-  <updated>2014-07-27T13:52:37+09:00</updated>
+  <updated>2014-08-01T09:08:44+09:00</updated>
   <id>http://azurecube.github.io/</id>
   <author>
     <name><![CDATA[arte_nut (twitter)]]></name>
@@ -12,6 +12,98 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Local Linuxのshutdown]]></title>
+    <link href="http://azurecube.github.io/blog/2014/07/30/shutdown/"/>
+    <updated>2014-07-30T08:18:57+09:00</updated>
+    <id>http://azurecube.github.io/blog/2014/07/30/shutdown</id>
+    <content type="html"><![CDATA[<h2>目標</h2>
+
+<p>Localで使ってるLinuxをremoteと間違えずに停止する</p>
+
+<h2>動機</h2>
+
+<p>local machineをLinuxで使ってて、停止処理もterminal上なので、sshでアクセスするremote nodeと停止処理が一緒になってしまう<br/>
+実際に何度か間違えてremote nodeを停止して辛い思いをしたのでfool proofな停止方法を考えたい</p>
+
+<h2>結果</h2>
+
+<p>sshのセッションではshutdownしないコマンドを作る</p>
+
+<h2>過程</h2>
+
+<p>停止のコマンドは色々あるようだけれど、停止のプロセスや再起動の有無などがメインでremoteの場合とlocalの場合を分けるような使い方についての情報は見付けられなかった</p>
+
+<p><a href="http://d.hatena.ne.jp/kanonji/20081125/1227892903">Linuxのシャットダウンや再起動のコマンドは色々ある &ndash; kanonjiの日記</a></p>
+
+<p>普通の人はこういうところで困ることがなさそうなのだけど、あまりリモートの停止処理が問題にならない理由は下記あたりかな。。</p>
+
+<ol>
+<li>local nodeをterminalから停止しない</li>
+<li>localとremoteでパスワードが違う</li>
+</ol>
+
+
+<p>1.についてWindowsやLinux Desktopの場合でもWindow ManagerのGUIで停止する場合などはそもそもremoteと同じ処理で停止しないのでlocalと間違えて、というのはなさそう(複数のremote同士というのはあるかもしれないけど)</p>
+
+<p>私はタイル型WMの<a href="http://xmonad.org/">Xmonad</a>を使っていて停止用のGUIインターフェイスはないのでterminalからコマンドでlocalを停止してるけど、これが少数派なのかもしれない。みんなもっとXMonad使おう</p>
+
+<p>ちなみにXmonadの場合下記のように自分で設定ファイルを書き変えてキーバインドに割り当ててる、というのが散見された。<br/>
+<a href="https://bbs.archlinux.org/viewtopic.php?id=139232">Xmonad doesn&rsquo;t have permissions to reboot when started via init[SOLVED (Page 1) / Applications &amp; Desktop Environments / Arch Linux Forums</a></p>
+
+<p>停止方法について質問してるような例もあったけれど、GDM入れるというのが提案されていて、多分一度XMonad抜けるというのが前提<br/>
+<a href="http://www.haskell.org/pipermail/xmonad/2012-January/012295.html">[xmonad] Logout, Shutdown, Restart.</a></p>
+
+<p>2.についてセキュリティの観点で当然の心得だとは思うけれど、無精な私はテスト用のVMなどはsudoがパスワードの再入力なしで実行できるようにしてしまっていて今のところ改めるつもりがない</p>
+
+<p>ということであまり既成のツールとかは期待できなさそうなのでちょっと書いてみることに<br/>
+インターフェイスを変えるのが有効そうなのでlocalでコマンドを変更する、というのが良さそうかなと。ついでに普段サーバーとしてアクセスしてるノードにも直接キーボード繋いでアクセスすることもあるのでsshで接続してる時にはshutdownしないというスクリプトにして、各ノードに配布することで目の前のnodeを停止する場合のみに使える、というコマンドにしてみた。需要なさそう。。。</p>
+
+<p><div><script src='https://gist.github.com/22a861c21708b9f13065.js?file=hlocal'></script>
+<noscript><pre><code>#!/bin/bash
+
+#check oplion by command first character
+op=$(echo $(basename $0 ) | cut -b 1)
+
+# parent process list
+plist=(&quot;$$&quot;)
+
+# add parent processes
+ppid() {
+  plist=(&quot;$(ps h -o ppid -p $1)&quot; &quot;${plist[@]}&quot;)
+}
+
+# get process command
+pcom() {
+  ps h -o command -p $1
+}
+
+# create process list until init
+while [ ${plist[0]} -gt 1 ]
+do
+  ppid $plist
+done
+
+# check process before init is ssh or not
+echo $(pcom ${plist[1]}) | grep ssh &gt; /dev/null
+if [ $? -eq 0 ]
+then
+  echo &quot;You are in ssh session and cannot shutdown `hostname` by this command&quot;
+else
+  sudo shutdown -${op} now
+fi
+</code></pre></noscript></div>
+</p>
+
+<p>ちなみに、注意点としては親にsshがあるかを探していてtelnetやmoshでの接続の場合は普通にshutdownされてしまうこと。
+あと初めの一文字をshutdownのオプションにしているので名前を変えるときにはhからはじまるようにしないと停止しなかったりする。rにするとリブートする</p>
+
+<p>私はhalt local/reboot localという意味からhlocal/rlocalという名前でコマンドにしていてrlocalはhlocalへのシンボリックリンクにしたかったのでこういう作りになってる</p>
+
+<p>とりあえず私はこれで誤停止しなくなったのだけど、また別のシチュエーションでの停止の問題があったら他の方法も考えてみたい</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress 設定]]></title>
@@ -26,7 +118,7 @@
 
 <ul>
 <li>blogのタイトルを変える</li>
-<li>linkを新しいtabで開く</li>
+<li>エントリ内のlinkを新しいtabで開く</li>
 </ul>
 
 
@@ -36,7 +128,24 @@
 
 <h2>過程</h2>
 
-<p>今回の目標に関する内容はほぼ下記より。</p>
+<p>blogのtitleは_config.ymlの変更。下記を参考に。<br/>
+<a href="http://blog.glidenote.com/blog/2011/11/07/install-octopress-on-github/">GithubとOctopressでモダンな技術系ブログを作ってみる &ndash; Glide Note &ndash; グライドノート</a></p>
+
+<p>linkについては下記を参考に外部ファイルに限らず_blankを設定することに。<br/>
+<a href="http://tantant.jp/blog/Octopress/configuring-octopress/">Octopressの初期設定時に気にしておきたい9箇所 &ndash; tantant</a></p>
+
+<p>```javascript :source/include/config/head.html</p>
+
+<script language="JavaScript">
+$(document).ready( function () {
+   $("a[href^='http']").attr('target', '_blank');
+})
+</script>
+
+
+<p>```</p>
+
+<p>とりあえず見栄えはともかくoutputに必要最低限が得られたので、記録しながら作業を進めていくことにしたい。</p>
 ]]></content>
   </entry>
   

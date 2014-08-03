@@ -9,8 +9,7 @@
   <meta name="author" content="arte_nut (twitter)">
 
   
-  <meta name="description" content="目標 Localで使ってるLinuxをremoteと間違えずに停止する 動機 local machineをLinuxで使ってて、停止処理もterminal上なので、sshでアクセスするremote nodeと停止処理が一緒になってしまう
-実際に何度か間違えてremote &hellip;">
+  <meta name="description" content="目標 Emacs Evil (Extensible VI Layer) をバッファローカルに有効にする 動機 Amazon.co.jp： 実践Vim 思考のスピードで編集しよう!: Drew Neil, 新丈径: 本を読んでvimのキーバインドや文字列操作に対する考えかたの有効性も理解して、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +70,153 @@ $(document).ready( function () {
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/03/momonga-6/">バッファローカルにEvilを有効にする/momonga.vim #6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-03T14:29:38+09:00" pubdate data-updated="true">Aug 3<sup>rd</sup>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>目標</h2>
+
+<p>Emacs Evil (Extensible VI Layer) をバッファローカルに有効にする</p>
+
+<h2>動機</h2>
+
+<p><a href="http://www.amazon.co.jp/%E5%AE%9F%E8%B7%B5Vim-%E6%80%9D%E8%80%83%E3%81%AE%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%81%A7%E7%B7%A8%E9%9B%86%E3%81%97%E3%82%88%E3%81%86-Drew-Neil/dp/4048916599">Amazon.co.jp： 実践Vim 思考のスピードで編集しよう!: Drew Neil, 新丈径: 本</a>を読んでvimのキーバインドや文字列操作に対する考えかたの有効性も理解して、過去のmomonga.vimにも参加して.vimrcを弄ったりしたものの、エディタというか作業のベースがEmacsになってしまっていて、これはVimに置き換えもできないと感じていた</p>
+
+<p>一方で以前から <a href="http://d.hatena.ne.jp/tarao/20130303/evil_intro">Evil: EmacsをVimのごとく使う &ndash; 導入編 &ndash; 貳佰伍拾陸夜日記</a> を読んで使ってみたいと気にはしていたのだけど<code>(evil-mode t)</code>を実行するとEmacs上の全てのバッファで有効になってしまうので導入に踏み切れないでいた。Vimキーバインドはプログラミングするバッファのみで有効になって欲しい</p>
+
+<p>で、momonga.vim#6がドワンゴでやる、ということだったのでこれを期にやってしまおうと企ててみた</p>
+
+<h2>結果</h2>
+
+<p>evil-local-modeという関数が用意されてて、完全に確認不足</p>
+
+<h2>経過</h2>
+
+<p>ちょっと頑張ってみないと、と思っていたevil-local-modeの箇所が公式に用意されていて何をしに来たのか良くわからない状態に。
+とりあえず最近書くもの関連だとこんな感じで該当のファイルをオープンしたタイミングで設定を有効にできるはず。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(require 'evil)
+</span><span class='line'>(evil-mode 0)
+</span><span class='line'>
+</span><span class='line'>(defmacro add-evil-mode (hook-name)
+</span><span class='line'>  `(add-hook ',hook-name '(lambda () (evil-local-mode t))))
+</span><span class='line'>
+</span><span class='line'>(add-evil-mode sh-mode-hook)
+</span><span class='line'>(add-evil-mode clojure-mode-hook)
+</span><span class='line'>(add-evil-mode ruby-mode-hook)
+</span><span class='line'>(add-evil-mode lisp-interaction-mode-hook)
+</span><span class='line'>(add-evil-mode emacs-lisp-mode-hook)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ついでにevil-local-modeを有効にしたり、C-gでEvilでの処理をキャンセルしてnormal-stateに戻るようなキーバインド設定。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  (defun toggle-evil-local-mode () (interactive)
+</span><span class='line'>    (if evil-local-mode
+</span><span class='line'>      (evil-local-mode 0)
+</span><span class='line'>      (evil-local-mode 1)))
+</span><span class='line'>  
+</span><span class='line'>  (defun evil-escape-or-quit (&optional prompt)
+</span><span class='line'>    (interactive)
+</span><span class='line'>    (cond
+</span><span class='line'>      ((or (evil-normal-state-p) (evil-insert-state-p) (evil-visual-state-p)
+</span><span class='line'>           (evil-replace-state-p) (evil-visual-state-p)) [escape])
+</span><span class='line'>    (t (kbd "C-g"))))
+</span><span class='line'>  
+</span><span class='line'>  (define-key key-translation-map     (kbd "C-g")     'evil-escape-or-quit)
+</span><span class='line'>  (define-key evil-operator-state-map (kbd "C-g")     'evil-escape-or-quit)
+</span><span class='line'>  (define-key evil-normal-state-map   [escape]        'keyboard-quit)
+</span><span class='line'>  (global-set-key                     (kbd "C-c C-z") 'toggle-evil-local-mode)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とりあえず、この辺を設定しておいて少しずつEvilを使っていくようにしようと思う。</p>
+
+<h2>課題</h2>
+
+<p>evil-mode-lineがevil-local-modeの場合は効いてなさそうなのをなんとかしたい。。。<br/>
+<a href="http://rhysd.hatenablog.com/entry/2013/09/17/220837">clever-f.vim</a>相当の機能が欲しい</p>
+
+<h2>その他</h2>
+
+<p>特にドワンゴだから、といったような特殊な感じはなかったんじゃないかと。。</p>
+
+<p>余り色々の人とお話はできなかったけれど@pogin503さんに偉そうにvimのことを話したり、Elispのことを教わったりした。圧倒的に入門viより実践Vimを読むべきと押し付けたりしたのでキモいVimmerとして嫌われていないかが少し心配。@ShougoMatsuさんとか勉強会でスクリーン使って4曲も歌ってたけどVimmerは悪くない。。はず</p>
+
+<p>周りのVimmerのコイツ何してるの、という視線もないまま空気と化して一人もくもくとEmacsをいじっていた私を見かねて主催の@supermomongaさんがEvil回りの話を振ってくれたのだけど、期待に応えられず。</p>
+
+<p>VimユーザとしてはEvilを使ってる状況でC-[でkeyboard-quit相当の処理をしたい場面があるのだけど思った通りに動かないとのこと。
+下記の設定はEscapeキーには効くけど、C-[には効かない。</p>
+
+<p><code>
+(define-key minibuffer-inactive-mode-map [escape] 'keyboard-quit)
+</code></p>
+
+<p>ちなみに強引に下記のようにC-[をC-gにtranslateしてしまえばkeyboard-quitを実行することは可能だった。</p>
+
+<p><code>
+(keyboard-translate ?\e ?\a)
+</code></p>
+
+<p>参考 <a href="http://www.geocities.co.jp/SiliconValley-Bay/9285/ELISP-JA/elisp_26.html">GNU Emacs Lispリファレンスマニュアル: Character Type</a></p>
+
+<p>今回のことでEmacs上でVimに近いキーバインドを使って作業できる状況を作れるようにはなってきたのだけどvimscriptで実装されてるあの機能が欲しい、となったりしそうなのが若干不安。そこまでEvilが手に馴染めばそれはそれで良い兆候なのだろうけど。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -353,6 +499,10 @@ markdownを忘れてしまったまま書いているので勉強しなおさな
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/08/03/momonga-6/">バッファローカルにEvilを有効にする/momonga.vim #6</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/07/30/shutdown/">Local Linuxのshutdown</a>

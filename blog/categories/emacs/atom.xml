@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Emacs | for loop]]></title>
   <link href="http://azurecube.github.io/blog/categories/emacs/atom.xml" rel="self"/>
   <link href="http://azurecube.github.io/"/>
-  <updated>2014-08-03T22:10:13+09:00</updated>
+  <updated>2014-08-03T22:36:41+09:00</updated>
   <id>http://azurecube.github.io/</id>
   <author>
     <name><![CDATA[arte_nut (twitter)]]></name>
@@ -24,11 +24,11 @@
 
 <h2>動機</h2>
 
-<p><a href="http://www.amazon.co.jp/%E5%AE%9F%E8%B7%B5Vim-%E6%80%9D%E8%80%83%E3%81%AE%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%81%A7%E7%B7%A8%E9%9B%86%E3%81%97%E3%82%88%E3%81%86-Drew-Neil/dp/4048916599">Amazon.co.jp： 実践Vim 思考のスピードで編集しよう!: Drew Neil, 新丈径: 本</a>を読んでvimのキーバインドや文字列操作に対する考えかたの有効性も理解して、過去のmomonga.vimにも参加して.vimrcを弄ったりしたものの、エディタというか作業のベースがEmacsになってしまっていて、これはVimに置き換えもできないと感じていた</p>
+<p><a href="http://www.amazon.co.jp/%E5%AE%9F%E8%B7%B5Vim-%E6%80%9D%E8%80%83%E3%81%AE%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%81%A7%E7%B7%A8%E9%9B%86%E3%81%97%E3%82%88%E3%81%86-Drew-Neil/dp/4048916599">Amazon.co.jp： 実践Vim 思考のスピードで編集しよう!: Drew Neil, 新丈径: 本</a>を読んでvimのキーバインドや文字列操作に対する考えかたの有効性も理解して、vimを使いつつ、過去のmomonga.vimにも参加して.vimrcを弄ったりしたものの、エディタというか作業のベースがEmacsになってしまっていて、これはVimに置き換えもできないと感じていた</p>
 
-<p>一方で以前から <a href="http://d.hatena.ne.jp/tarao/20130303/evil_intro">Evil: EmacsをVimのごとく使う &ndash; 導入編 &ndash; 貳佰伍拾陸夜日記</a> を読んで使ってみたいと気にはしていたのだけど<code>(evil-mode t)</code>を実行するとEmacs上の全てのバッファで有効になってしまうので導入に踏み切れないでいた。Vimキーバインドはプログラミングするバッファのみで有効になって欲しい</p>
+<p>一方で以前から <a href="http://d.hatena.ne.jp/tarao/20130303/evil_intro">Evil: EmacsをVimのごとく使う &ndash; 導入編 &ndash; 貳佰伍拾陸夜日記</a> を読んで使ってみたいと気にはしていたのだけど<code>(evil-mode t)</code>を実行するとEmacs上の全てのバッファで有効になってしまうので導入に踏み切れないでいた。種々のアプリはEmacs上での動作を基本としているのでVimキーバインドはプログラミングするバッファのみで有効になって欲しい</p>
 
-<p>で、momonga.vim#6がドワンゴでやる、ということだったのでこれを期にやってしまおうと企ててみた</p>
+<p>で、momonga.vim#6がドワンゴでやる、ということだったので会場に対する興味もありつつこれを期にやってしまおうと企ててみた</p>
 
 <h2>結果</h2>
 
@@ -36,8 +36,8 @@
 
 <h2>経過</h2>
 
-<p>ちょっと頑張ってみないと、と思っていたevil-local-modeの箇所が公式に用意されていて何をしに来たのか良くわからない状態に。
-とりあえず最近書くもの関連だとこんな感じで該当のファイルをオープンしたタイミングで設定を有効にできるはず。</p>
+<p>ちょっと頑張ってみないと、と思っていたevilをローカルバッファのみで有効にする、という処理が公式に用意されていて何をしに来たのか良くわからない状態に。
+とりあえずこんな感じで該当のファイルをオープンしたタイミングで設定を有効にできるはず。</p>
 
 <p>```
 (require &lsquo;evil)
@@ -84,23 +84,26 @@
 <p>evil-mode-lineがevil-local-modeの場合は効いてなさそうなのをなんとかしたい。。。<br/>
 <a href="http://rhysd.hatenablog.com/entry/2013/09/17/220837">clever-f.vim</a>相当の機能が欲しい</p>
 
-<h2>その他</h2>
+<h2>感想とか</h2>
 
-<p>特にドワンゴだから、といったような特殊な感じはなかったんじゃないかと。。<br/>
+<p>会場について特にドワンゴだから、といったような特殊な感じはなかったんじゃないかと。。<br/>
+うたってみたの実演があったけど、(闇のVimの)勉強会では普通のことのようだし。<br/>
 前回同様ゆるくもくもくできたけど、前回朝から晩までだったのに比べればだいぶ短期集中だったかな。</p>
 
-<p>余り色々の人とお話はできなかったけれど@pogin503さんに偉そうにvimのことを話したり、Elispのことを教わったりした。圧倒的に入門viより実践Vimを読むべきと押し付けたりしたのでキモいVimmerとして嫌われていないかが少し心配。@ShougoMatsuさんとか勉強会でスクリーン使って4曲も歌ってたけどVimmerは悪くない。。はず</p>
+<p>余り色々の人とお話はできなかったけれど@pogin503さんにElispのことを教わったりした。Vimはあまり使ってないとのことだったのでVimについて知りたければ入門viより実践Vimを読むべきと押し付けたりした。</p>
 
-<p>周りのVimmerのコイツ何してるの、という視線もないまま空気と化して一人もくもくとEmacsをいじっていた私を見かねて主催の@supermomongaさんがEvil回りの話を振ってくれたのだけど、期待に応えられず。</p>
+<p>あとは、周りのVimmerのコイツ何してるの、という視線もないまま空気と化して一人もくもくとEmacsをいじっていた私を見かねて主催の@supermomongaさんがEvil回りの話を振ってくれたのだけど、期待に応えられず。</p>
 
-<p>VimユーザとしてはEvilを使ってる状況でC-[でkeyboard-quit相当の処理をしたい場面があるのだけど思った通りに動かないとのこと。
-下記の設定はEscapeキーには効くけど、C-[には効かない。</p>
+<p>もってきてもらった課題はVimユーザとしてはEvilを使ってる状況でC-[でkeyboard-quit相当の処理をしたい場面があるのだけど思った通りに動かないといったもの。
+例えば下記の設定はEscapeキーには効くけど、C-[には効かない。</p>
 
 <p><code>
 (define-key minibuffer-inactive-mode-map [escape] 'keyboard-quit)
 </code></p>
 
-<p>ちなみに強引に下記のようにC-[をC-gにtranslateしてしまえばkeyboard-quitを実行することは可能だった。</p>
+<p>EscapeもC-[もESCとして認識されてるみたいなのだけど、どうもそれぞれ別個に機能としてのESCと紐付いてるみたいで、かつC-[のキーバインドを変更する方法は見付けられなかった。keycodeを検出するxevを動かすために@supermomongaさんのMacにXを捩じ込んだりもしたけど、keycode指定も上手くいかなかくて悔しい思いをした。</p>
+
+<p>ちなみに後で試してみたところ強引に下記のようにC-[をC-gにtranslateしてしまえばkeyboard-quitを実行することは可能だった。</p>
 
 <p><code>
 (keyboard-translate ?\e ?\a)
@@ -108,7 +111,8 @@
 
 <p>参考 <a href="http://www.geocities.co.jp/SiliconValley-Bay/9285/ELISP-JA/elisp_26.html">GNU Emacs Lispリファレンスマニュアル: Character Type</a></p>
 
-<p>今回のことでEmacs上でVimに近いキーバインドを使って作業できる状況を作れるようにはなってきたのだけどvimscriptで実装されてるあの機能が欲しい、となったりしそうなのが若干不安。そこまでEvilが手に馴染めばそれはそれで良い兆候なのだろうけど。</p>
+<p>ということで進捗としては何しにわざわざ勉強会に行ったのか、といった感じになってしまったけれどこういう機会がないとなかなかEvilに向き会えなかったので良い切っ掛けだったと思う。<br/>
+今回のことでEmacs上でVimに近いキーバインドを使って作業できる状況を作れるようにはなってきたのだけどvimscriptで実装されてるあの機能が欲しい、となったりしそうなのが若干不安。そこまでEvilが手に馴染めばそれはそれで良い兆候なのだろうけど。</p>
 ]]></content>
   </entry>
   
